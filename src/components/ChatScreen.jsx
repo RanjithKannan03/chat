@@ -3,6 +3,8 @@
 import React from 'react';
 import Image from 'next/image';
 import { VideoCamera,Phone,MagnifyingGlass,CaretDown } from 'phosphor-react';
+import { MediaMsg, TextMessage } from './Message';
+import { faker } from '@faker-js/faker';
 
 const ChatScreen = () => {
     return (
@@ -38,6 +40,18 @@ const ChatScreen = () => {
                     <CaretDown size={25} />
                     </div>
                 </div>
+
+                {/* Chat */}
+                <div className='w-full h-[calc(100vh-10rem)] bg-[#F0F4FA] overflow-y-scroll'>
+
+                <div className='flex flex-col w-full h-full p-4 gap-4'>
+                <TextMessage msg={{txt:"Hello",incoming:true}}/>
+                <TextMessage msg={{txt:"Hi 👋 , how are you?",incoming:false}}/>
+                <MediaMsg msg={{url:faker.image.url(),incoming:false}}/>
+                </div>
+
+                </div>
+
             </div>
 
         </div>
