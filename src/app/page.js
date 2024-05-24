@@ -3,12 +3,19 @@
 import Chat from "@/components/Chat";
 import Image from "next/image";
 import { CircleDashed, MagnifyingGlass, FunnelSimple } from "phosphor-react";
+import { faker } from '@faker-js/faker';
+import { useState } from "react";
+import ChatScreen from "@/components/ChatScreen";
 
 export default function Home() {
+  faker.seed(123);
+  const [isChatSelected,setIsChatSelected]=useState(false);
   return (
     <div className="flex h-screen">
 
-      <div className="w-[25%] bg-[#eef1fa] h-screen p-10 drop-shadow flex flex-col gap-4">
+    {/* Contacts */}
+
+      <div className="w-[25%] bg-[#F8FAFF] h-screen p-10 drop-shadow flex flex-col gap-4">
 
         {/* Options */}
         <div className="h-auto">
@@ -38,10 +45,10 @@ export default function Home() {
             </div>
 
             {/* Archive */}
-            <div className="flex w-full items-center gap-2">
+            <button className="flex w-full items-center gap-2 hover:text-[#709CE6]">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="32" fill="#000000" viewBox="0 0 256 256"><path d="M223.16,68.42l-16-32A8,8,0,0,0,200,32H56a8,8,0,0,0-7.16,4.42l-16,32A8.08,8.08,0,0,0,32,72V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V72A8.08,8.08,0,0,0,223.16,68.42ZM60.94,48H195.06l8,16H52.94ZM208,208H48V80H208V208Zm-42.34-61.66a8,8,0,0,1,0,11.32l-32,32a8,8,0,0,1-11.32,0l-32-32a8,8,0,0,1,11.32-11.32L120,164.69V104a8,8,0,0,1,16,0v60.69l18.34-18.35A8,8,0,0,1,165.66,146.34Z"></path></svg>
               <span>Archived</span>
-            </div>
+            </button>
 
             {/* Line */}
             <div className="w-full h-[1px] bg-[#B4B4B4]" />
@@ -49,7 +56,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Chat */}
+        {/* Contacts List */}
 
         <div className="w-full flex-1 flex flex-col gap-4">
           {/* Pinned */}
@@ -59,14 +66,14 @@ export default function Home() {
             <div className="flex h-[90%] w-full overflow-y-scroll py-2">
 
               <div className="flex flex-col w-full h-[200px] gap-4 pr-2 pb-2">
-                <Chat src='/assets/default.png' name='Pink Panda' latestMsg='It’s so quite outside 🧐' isActive={false} time='9:36' numNewMsg={5} />
-                <Chat src='/assets/default.png' name='Red Panda' latestMsg='It’s so quite outside 🧐' isActive={true} time='9:36' numNewMsg={0} />
-                <Chat src='/assets/default.png' name='Green Panda' latestMsg='It’s so quite outside 🧐' isActive={false} time='9:36' numNewMsg={2} />
-                <Chat src='/assets/default.png' name='Blue Panda' latestMsg='It’s so quite outside 🧐' isActive={true} time='9:36' numNewMsg={0} />
+                <Chat src={faker.image.avatar()} name={faker.internet.userName()} latestMsg='It’s so quite outside 🧐' isActive={false} time='9:36' numNewMsg={5} />
+                <Chat src={faker.image.avatar()} name={faker.internet.userName()} latestMsg='It’s so quite outside 🧐' isActive={true} time='9:36' numNewMsg={0} />
+                <Chat src={faker.image.avatar()} name={faker.internet.userName()} latestMsg='It’s so quite outside 🧐' isActive={false} time='9:36' numNewMsg={2} />
+                <Chat src={faker.image.avatar()} name={faker.internet.userName()} latestMsg='It’s so quite outside 🧐' isActive={true} time='9:36' numNewMsg={0} />
 
               </div>
 
-            </div>
+            </div> 
 
           </div>
 
@@ -77,12 +84,12 @@ export default function Home() {
             <div className="flex h-[90%] w-full overflow-y-scroll py-2">
 
               <div className="flex flex-col w-full h-[200px] gap-4 pr-2 pb-2">
-                <Chat src='/assets/default.png' name='Pink Panda' latestMsg='It’s so quite outside 🧐' isActive={false} time='9:36' numNewMsg={5} />
-                <Chat src='/assets/default.png' name='Red Panda' latestMsg='It’s so quite outside 🧐' isActive={true} time='9:36' numNewMsg={0} />
-                <Chat src='/assets/default.png' name='Green Panda' latestMsg='It’s so quite outside 🧐' isActive={false} time='9:36' numNewMsg={2} />
-                <Chat src='/assets/default.png' name='Blue Panda' latestMsg='It’s so quite outside 🧐' isActive={true} time='9:36' numNewMsg={0} />
-                <Chat src='/assets/default.png' name='Blue Panda' latestMsg='It’s so quite outside 🧐' isActive={true} time='9:36' numNewMsg={0} />
-                <Chat src='/assets/default.png' name='Blue Panda' latestMsg='It’s so quite outside 🧐' isActive={true} time='9:36' numNewMsg={0} />
+                <Chat src={faker.image.avatar()} name={faker.internet.userName()} latestMsg='It’s so quite outside 🧐' isActive={false} time='9:36' numNewMsg={5} />
+                <Chat src={faker.image.avatar()} name={faker.internet.userName()} latestMsg='It’s so quite outside 🧐' isActive={true} time='9:36' numNewMsg={0} />
+                <Chat src={faker.image.avatar()} name={faker.internet.userName()} latestMsg='It’s so quite outside 🧐' isActive={false} time='9:36' numNewMsg={2} />
+                <Chat src={faker.image.avatar()} name={faker.internet.userName()} latestMsg='It’s so quite outside 🧐' isActive={true} time='9:36' numNewMsg={0} />
+                <Chat src={faker.image.avatar()} name={faker.internet.userName()} latestMsg='It’s so quite outside 🧐' isActive={true} time='9:36' numNewMsg={0} />
+                <Chat src={faker.image.avatar()} name={faker.internet.userName()} latestMsg='It’s so quite outside 🧐' isActive={true} time='9:36' numNewMsg={0} />
 
               </div>
 
@@ -93,6 +100,16 @@ export default function Home() {
 
         </div>
 
+
+
+      </div>
+
+      {/* Chat Screen */}
+      <div className="w-[75%]">
+
+      <div className="w-full">
+      <ChatScreen/>
+      </div>
 
 
       </div>

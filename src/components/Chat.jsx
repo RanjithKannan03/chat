@@ -4,12 +4,12 @@ import React from 'react'
 const Chat = (props) => {
     return (
         <button>
-            <div className='flex w-full h-20 bg-white rounded-md shrink-0 shadow p-4'>
+            <div className='flex w-full h-20 bg-white rounded-md shrink-0 drop-shadow-lg  p-4'>
                 <div className='flex w-full items-center gap-2'>
                     {/* Profile Pic */}
                     <div className='w-1/4'>
                         <div className='w-12 h-12 relative'>
-                            <Image src={props.src} fill className='object-contain' />
+                            <Image src={props.src} fill className='object-contain rounded-full' />
                             {/* Online Status */}
                             <div className={`absolute h-3 w-3 rounded-full ${props.isActive ? 'bg-green-400' : 'bg-red-400'} bottom-0 right-0`} />
                         </div>
