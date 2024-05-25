@@ -1,11 +1,11 @@
 'use client';
-
 import Chat from "@/components/Chat";
 import Image from "next/image";
-import { CircleDashed, MagnifyingGlass, FunnelSimple } from "phosphor-react";
+import { CircleDashed } from "@/components/Icons";
 import { faker } from '@faker-js/faker';
 import { useState } from "react";
 import ChatScreen from "@/components/ChatScreen";
+import Search from "@/components/Search";
 
 export default function Home() {
   faker.seed(123);
@@ -28,20 +28,8 @@ export default function Home() {
             </div>
 
             {/* Search */}
-            <div className="flex items-center bg-[#dae7fc] rounded-xl w-full h-12 px-2 gap-2 text-[#709CE6]">
-
-              <div>
-                <MagnifyingGlass size={25} />
-              </div>
-
-              <div className="w-[75%]">
-                <input className="bg-transparent outline-none w-full placeholder-[#709CE6]" placeholder="Search" />
-              </div>
-
-              <div>
-                <button><FunnelSimple size={25} className='text-[#B4B4B4]' /></button>
-              </div>
-
+            <div>
+            <Search/>
             </div>
 
             {/* Archive */}
