@@ -45,7 +45,7 @@ const Footer = () => {
                     <AnimatePresence>
                         {isOpen && (
                             <motion.div key={1} variants={emojiPieckerVariant} initial="close" animate="open" className='absolute bottom-12 right-0' exit="exit">
-                                <Picker data={data} onEmojiSelect={(emoji) => { setMsg((prev) => { return (prev + emoji.native) }) }} />
+                                <Picker data={data} onEmojiSelect={(emoji) => { setMsg((prev) => { return (prev + emoji.native) }) }} theme="light" />
                             </motion.div>
                         )}
                     </AnimatePresence>

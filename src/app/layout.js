@@ -14,10 +14,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <div className="w-screen h-screen flex">
-        <div className="w-32">
+        <div className="w-20">
         <NavBar/>
         </div>
-        <div className="w-[calc(100vw-8rem)]">
+        <div className="w-[calc(100vw-5rem)]">
         {children}
         </div>
         </div>
