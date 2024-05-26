@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import { ChatTeardropDots, Users, Phone, Gear } from 'phosphor-react';
+import { ChatTeardropDots, Users, Phone, Gear } from './Icons';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
@@ -35,7 +35,7 @@ const NavBar = () => {
                                 {path === link.url && (
                                     <motion.div layoutId='active-pill' className='absolute inset-0 bg-[#5B96F7]' transition={{ type: 'spring', mass: '0.4', damping: 8 }} style={{ borderRadius: 16 }} />
                                 )}
-                                <motion.span className={`relative z-10 ${path === link.url ? 'text-white' : 'text-black'}`} >{link.icon}</motion.span>
+                                <span className={`relative z-10 ${path === link.url ? 'text-white' : 'text-black'}`} >{link.icon}</span>
                             </Link>
 
                         )

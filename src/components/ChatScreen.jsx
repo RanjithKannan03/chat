@@ -4,14 +4,97 @@ import { faker } from '@faker-js/faker';
 import Footer from './Footer';
 import Header from './Header';
 
-const ChatScreen = () => {
+const ChatScreen = (props) => {
+    const ChatList = [
+        {
+          id: 0,
+          img: faker.image.avatar(),
+          name: faker.internet.userName(),
+          msg: faker.music.songName(),
+          time: "9:36",
+          unread: 0,
+          pinned: true,
+          online: true,
+        },
+        {
+          id: 1,
+          img: faker.image.avatar(),
+          name: faker.internet.userName(),
+          msg: faker.music.songName(),
+          time: "12:02",
+          unread: 2,
+          pinned: true,
+          online: false,
+        },
+        {
+          id: 2,
+          img: faker.image.avatar(),
+          name: faker.internet.userName(),
+          msg: faker.music.songName(),
+          time: "10:35",
+          unread: 3,
+          pinned: false,
+          online: true,
+        },
+        {
+          id: 3,
+          img: faker.image.avatar(),
+          name: faker.internet.userName(),
+          msg: faker.music.songName(),
+          time: "04:00",
+          unread: 0,
+          pinned: false,
+          online: true,
+        },
+        {
+          id: 4,
+          img: faker.image.avatar(),
+          name: faker.internet.userName(),
+          msg: faker.music.songName(),
+          time: "08:42",
+          unread: 0,
+          pinned: false,
+          online: false,
+        },
+        {
+          id: 5,
+          img: faker.image.avatar(),
+          name: faker.internet.userName(),
+          msg: faker.music.songName(),
+          time: "08:42",
+          unread: 0,
+          pinned: false,
+          online: false,
+        },
+        {
+          id: 6,
+          img: faker.image.avatar(),
+          name: faker.internet.userName(),
+          msg: faker.music.songName(),
+          time: "08:42",
+          unread: 0,
+          pinned: false,
+          online: false,
+        },
+        {
+          id: 7,
+          img: faker.image.avatar(),
+          name: faker.internet.userName(),
+          msg: faker.music.songName(),
+          time: "08:42",
+          unread: 0,
+          pinned: false,
+          online: false,
+        },
+      ];
+      faker.seed(123);
     return (
         <div className='w-full h-full'>
 
             <div className='flex flex-col'>
                 {/* Header */}
                 <div>
-                    <Header />
+                    <Header name={ChatList[props.selectedID].name} src={ChatList[props.selectedID].img} isOnline={ChatList[props.selectedID].online} />
                 </div>
 
                 {/* Chat */}

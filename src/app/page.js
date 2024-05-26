@@ -7,15 +7,104 @@ import { useState } from "react";
 import ChatScreen from "@/components/ChatScreen";
 import Search from "@/components/Search";
 
+
+
+
 export default function Home() {
   faker.seed(123);
   const [isChatSelected,setIsChatSelected]=useState(false);
+  const [selectedID,setSelectedID]=useState(-1);
+  const ChatList = [
+    {
+      id: 0,
+      img: faker.image.avatar(),
+      name: faker.internet.userName(),
+      msg: faker.music.songName(),
+      time: "9:36",
+      unread: 0,
+      pinned: true,
+      online: true,
+    },
+    {
+      id: 1,
+      img: faker.image.avatar(),
+      name: faker.internet.userName(),
+      msg: faker.music.songName(),
+      time: "12:02",
+      unread: 2,
+      pinned: true,
+      online: false,
+    },
+    {
+      id: 2,
+      img: faker.image.avatar(),
+      name: faker.internet.userName(),
+      msg: faker.music.songName(),
+      time: "10:35",
+      unread: 3,
+      pinned: false,
+      online: true,
+    },
+    {
+      id: 3,
+      img: faker.image.avatar(),
+      name: faker.internet.userName(),
+      msg: faker.music.songName(),
+      time: "04:00",
+      unread: 0,
+      pinned: false,
+      online: true,
+    },
+    {
+      id: 4,
+      img: faker.image.avatar(),
+      name: faker.internet.userName(),
+      msg: faker.music.songName(),
+      time: "08:42",
+      unread: 0,
+      pinned: false,
+      online: false,
+    },
+    {
+      id: 5,
+      img: faker.image.avatar(),
+      name: faker.internet.userName(),
+      msg: faker.music.songName(),
+      time: "08:42",
+      unread: 0,
+      pinned: false,
+      online: false,
+    },
+    {
+      id: 6,
+      img: faker.image.avatar(),
+      name: faker.internet.userName(),
+      msg: faker.music.songName(),
+      time: "08:42",
+      unread: 0,
+      pinned: false,
+      online: false,
+    },
+    {
+      id: 7,
+      img: faker.image.avatar(),
+      name: faker.internet.userName(),
+      msg: faker.music.songName(),
+      time: "08:42",
+      unread: 0,
+      pinned: false,
+      online: false,
+    },
+  ];
+
+  
+
   return (
     <div className="flex h-screen">
-
     {/* Contacts */}
 
       <div className="w-[25%] bg-[#F8FAFF] h-screen p-10 drop-shadow flex flex-col gap-4">
+
 
         {/* Options */}
         <div className="h-auto">
@@ -54,10 +143,13 @@ export default function Home() {
             <div className="flex h-[90%] w-full overflow-y-scroll py-2">
 
               <div className="flex flex-col w-full h-[200px] gap-4 pr-2 pb-2">
-                <Chat src={faker.image.avatar()} name={faker.internet.userName()} latestMsg='It’s so quite outside 🧐' isActive={false} time='9:36' numNewMsg={5} />
-                <Chat src={faker.image.avatar()} name={faker.internet.userName()} latestMsg='It’s so quite outside 🧐' isActive={true} time='9:36' numNewMsg={0} />
-                <Chat src={faker.image.avatar()} name={faker.internet.userName()} latestMsg='It’s so quite outside 🧐' isActive={false} time='9:36' numNewMsg={2} />
-                <Chat src={faker.image.avatar()} name={faker.internet.userName()} latestMsg='It’s so quite outside 🧐' isActive={true} time='9:36' numNewMsg={0} />
+                {
+                  ChatList.filter((chat)=>{return (chat.pinned===true)}).map((chat)=>{
+                    return (
+                      <Chat key={chat.id} id={chat.id} src={chat.img} name={chat.name} msg={chat.msg} isActive={chat.online} time={chat.time} unread={chat.unread} selectedID={selectedID} setSelectedID={setSelectedID} setIsChatSelected={setIsChatSelected}/>
+                    )
+                  })
+                }
 
               </div>
 
@@ -72,12 +164,13 @@ export default function Home() {
             <div className="flex h-[90%] w-full overflow-y-scroll py-2">
 
               <div className="flex flex-col w-full h-[200px] gap-4 pr-2 pb-2">
-                <Chat src={faker.image.avatar()} name={faker.internet.userName()} latestMsg='It’s so quite outside 🧐' isActive={false} time='9:36' numNewMsg={5} />
-                <Chat src={faker.image.avatar()} name={faker.internet.userName()} latestMsg='It’s so quite outside 🧐' isActive={true} time='9:36' numNewMsg={0} />
-                <Chat src={faker.image.avatar()} name={faker.internet.userName()} latestMsg='It’s so quite outside 🧐' isActive={false} time='9:36' numNewMsg={2} />
-                <Chat src={faker.image.avatar()} name={faker.internet.userName()} latestMsg='It’s so quite outside 🧐' isActive={true} time='9:36' numNewMsg={0} />
-                <Chat src={faker.image.avatar()} name={faker.internet.userName()} latestMsg='It’s so quite outside 🧐' isActive={true} time='9:36' numNewMsg={0} />
-                <Chat src={faker.image.avatar()} name={faker.internet.userName()} latestMsg='It’s so quite outside 🧐' isActive={true} time='9:36' numNewMsg={0} />
+              {
+                  ChatList.filter((chat)=>{return (chat.pinned===false)}).map((chat)=>{
+                    return (
+                      <Chat key={chat.id} id={chat.id} src={chat.img} name={chat.name} msg={chat.msg} isActive={chat.online} time={chat.time} unread={chat.unread} selectedID={selectedID} setSelectedID={setSelectedID} setIsChatSelected={setIsChatSelected} />
+                    )
+                  })
+                }
 
               </div>
 
@@ -96,7 +189,7 @@ export default function Home() {
       <div className="w-[75%]">
 
       <div className="w-full">
-      <ChatScreen/>
+      <ChatScreen selectedID={selectedID}/>
       </div>
 
 
