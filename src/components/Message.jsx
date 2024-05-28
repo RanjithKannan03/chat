@@ -65,8 +65,8 @@ const MediaMsg = (props) => {
 const DocMsg = (props) => {
   return (
     <div className={`flex flex-col gap-2 ${props.msg.incoming ? 'self-start' : 'self-end'}`}>
-      <div className={`flex justify-center items-center rounded-3xl drop-shadow-lg overflow-hidden flex-col ${props.msg.incoming ? 'bg-white text-[#696969]' : 'bg-[#5B96F7] text-white'}`}>
-        <div className='flex p-4 items-center min-w-[200px] self-start gap-8'>
+      <div className={`flex rounded-3xl drop-shadow-lg overflow-hidden flex-col ${props.msg.incoming ? 'bg-white text-[#696969]' : 'bg-[#5B96F7] text-white'}`}>
+        <div className='flex p-4 items-center min-w-[200px] justify-center gap-8'>
           <Image size={25} />
           <span>{props.msg.docName}</span>
           <DownloadSimple size={25} />
@@ -83,15 +83,39 @@ const DocMsg = (props) => {
   )
 }
 
-const TimeLine = (props) => {
+const LinkMsg = (props) => {
   return (
-    <div className='w-full flex gap-4 items-center'>
-    <div className='flex-1 h-[1px] bg-[#696969]'/>
-    <span className='text-[#696969]'>{props.date}</span>
-    <div className='flex-1 h-[1px] bg-[#696969]'/>
+    <div className={`flex flex-col gap-2 ${props.msg.incoming ? 'self-start' : 'self-end'}`}>
+      <div className={`flex rounded-3xl drop-shadow-lg overflow-hidden flex-col ${props.msg.incoming ? 'bg-white text-[#696969]' : 'bg-[#5B96F7] text-white'}`}>
+        <div className='flex py-2 px-4 items-center min-w-[200px] max-w-[450px] self-start gap-8'>
+          <a href={props.msg.link} target='_blank'>
+            <span className='whitespace-nowrap'>{props.msg.link}</span>
+          </a>
+        </div>
+
+        {props.msg.txt &&
+          <div className={`py-2 px-4 min-w-[200px] max-w-[450px]`}>
+            <span>{props.msg.txt}</span>
+          </div>
+        }
+
+      </div>
+
     </div>
   )
 }
 
 
-export { TextMessage, MediaMsg, DocMsg,TimeLine };
+
+const TimeLine = (props) => {
+  return (
+    <div className='w-full flex gap-4 items-center'>
+      <div className='flex-1 h-[1px] bg-[#696969]' />
+      <span className='text-[#696969]'>{props.date}</span>
+      <div className='flex-1 h-[1px] bg-[#696969]' />
+    </div>
+  )
+}
+
+
+export { TextMessage, MediaMsg, DocMsg, TimeLine, LinkMsg };

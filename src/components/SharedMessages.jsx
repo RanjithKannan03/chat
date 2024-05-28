@@ -6,6 +6,8 @@ import { sidebarStore } from '@/zustand/store';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Media from './Media';
+import Links from './Links';
+import Docs from './Docs';
 
 const options=['Media','Links','Docs'];
 
@@ -46,7 +48,10 @@ const SharedMessages = () => {
             
             {option==="Media"?
             <Media/>:
-            null
+            option==="Links"?
+            <Links/>
+            :
+            <Docs/>
             }
 
             </div>

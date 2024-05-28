@@ -1,5 +1,5 @@
 import React from 'react';
-import { DocMsg, MediaMsg, TextMessage, TimeLine } from './Message';
+import { DocMsg, LinkMsg, MediaMsg, TextMessage, TimeLine } from './Message';
 import { faker } from '@faker-js/faker';
 import Footer from './Footer';
 import Header from './Header';
@@ -88,6 +88,82 @@ const ChatScreen = (props) => {
             online: false,
         },
     ];
+    const Chat_History = [
+        {
+            type: "msg",
+            message: "Hi 👋🏻, How are ya ?",
+            incoming: true,
+            outgoing: false,
+            time: "10:00 PM",
+        },
+        {
+            type: "divider",
+            text: "Today",
+        },
+        {
+            type: "msg",
+            message: "Hi 👋 Panda, not bad, u ?",
+            incoming: false,
+            outgoing: true,
+            time: "10:05 AM",
+        },
+        {
+            type: "msg",
+            message: "Can you send me an abstarct image?",
+            incoming: false,
+            outgoing: true,
+            time: "10:08 AM",
+        },
+        {
+            type: "msg",
+            message: "Ya sure, sending you a pic",
+            incoming: true,
+            outgoing: false,
+            time: "10:10 AM",
+        },
+        {
+            type: "msg",
+            subtype: "img",
+            message: "Here You Go",
+            img: faker.image.url(),
+            incoming: true,
+            outgoing: false,
+            time: "10:15 AM",
+        },
+        {
+            type: "msg",
+            message: "Can you please send this in file format?",
+            incoming: false,
+            outgoing: true,
+            time: "10:20 AM",
+        },
+        {
+            type: "msg",
+            subtype: "doc",
+            message: "Yes sure, here you go.",
+            incoming: true,
+            outgoing: false,
+            time: "10:25 AM",
+        },
+        {
+            type: "msg",
+            subtype: "link",
+            link: "youtube.com/watch?v=UfvRRIindQ8",
+            message: "Yep, I can also do that",
+            incoming: true,
+            outgoing: false,
+            time: "10:30 AM",
+        },
+        {
+            type: "msg",
+            subtype: "reply",
+            reply: "This is a reply",
+            message: "Yep, I can also do that",
+            incoming: false,
+            outgoing: true,
+            time: "10:35 AM",
+        }
+    ];
     return (
         <div className='w-full h-full'>
 
@@ -102,12 +178,26 @@ const ChatScreen = (props) => {
 
                     <div className='flex'>
                         <div className='flex flex-col w-full p-4 gap-4'>
-                            <TextMessage msg={{ txt: "Hello", incoming: true, time: "9:36" }} />
-                            <TextMessage msg={{ txt: "Hi 👋 , how are you?", incoming: false, time: "10:00" }} />
-                            <MediaMsg msg={{ url: faker.image.url(), incoming: false, txt: "This is a cat", time: "11:30" }} />
-                            <MediaMsg msg={{ url: faker.image.url(), incoming: false, time: "11:50" }} />
-                            <DocMsg msg={{ docName: "Abstract.png", incoming: true, time: "2:00" }} />
-                            <TimeLine date="Today" />
+
+                            {Chat_History.map((chat) => {
+                                if (chat.type === 'msg') {
+                                    if (chat.subtype === 'doc') {
+                                        return (<DocMsg msg={{ docName: "Abstract.png", txt: chat.message, incoming: chat.incoming, time: chat.time }} />)
+                                    }
+                                    else if (chat.subtype === 'img') {
+                                        return (<MediaMsg msg={{ url: chat.img, txt: chat.message, incoming: chat.incoming, time: chat.time }} />)
+                                    }
+                                    else if (chat.subtype === 'link') {
+                                        return (<LinkMsg msg={{ link: chat.link, txt: chat.message, incoming: chat.incoming, time: chat.time }} />)
+                                    }
+                                    else {
+                                        return (<TextMessage msg={{ txt: chat.message, incoming: chat.incoming, time: chat.time }} />)
+                                    }
+                                }
+                                else {
+                                    return <TimeLine date={chat.text} />
+                                }
+                            })}
                         </div>
                     </div>
 
