@@ -1,18 +1,17 @@
 'use client';
+
 import Chat from "@/components/Chat";
-import Image from "next/image";
 import { CircleDashed } from "@/components/Icons";
 import { faker } from '@faker-js/faker';
-import { useState } from "react";
 import ChatScreen from "@/components/ChatScreen";
 import Search from "@/components/Search";
 import DefaultScreen from "@/components/DefaultScreen";
-import { sidebarStore } from "@/zustand/store";
-import { AnimatePresence } from "framer-motion";
+import { selectedUserStore, sidebarStore } from "@/zustand/store";
+import Contact from "@/components/Contact";
 
 export default function Home() {
   faker.seed(123);
-  const [selectedID, setSelectedID] = useState(-1);
+  const id = selectedUserStore((state) => state.id)
   const ChatList = [
     {
       id: 0,
@@ -96,7 +95,7 @@ export default function Home() {
     },
   ];
 
-  const isOpen = sidebarStore((state) => state.open);
+  const open = sidebarStore((state) => state.open);
 
   return (
 
@@ -140,13 +139,13 @@ export default function Home() {
           <div className="h-1/3 flex flex-col gap-2">
             <span>Pinned</span>
 
-            <div className="flex h-[90%] w-full overflow-y-scroll py-2">
+            <div className="flex flex-1 w-full overflow-y-scroll py-2">
 
               <div className="flex flex-col w-full h-[200px] gap-4 pr-2 pb-2">
                 {
                   ChatList.filter((chat) => { return (chat.pinned === true) }).map((chat) => {
                     return (
-                      <Chat key={chat.id} id={chat.id} src={chat.img} name={chat.name} msg={chat.msg} isActive={chat.online} time={chat.time} unread={chat.unread} selectedID={selectedID} setSelectedID={setSelectedID} />
+                      <Chat key={chat.id} id={chat.id} src={chat.img} name={chat.name} msg={chat.msg} isActive={chat.online} time={chat.time} unread={chat.unread} />
                     )
                   })
                 }
@@ -161,13 +160,13 @@ export default function Home() {
           <div className="h-2/3 flex flex-col gap-2">
             <span>All Messages</span>
 
-            <div className="flex h-[90%] w-full overflow-y-scroll py-2">
+            <div className="flex flex-1 w-full overflow-y-scroll py-2">
 
               <div className="flex flex-col w-full h-[200px] gap-4 pr-2 pb-2">
                 {
                   ChatList.filter((chat) => { return (chat.pinned === false) }).map((chat) => {
                     return (
-                      <Chat key={chat.id} id={chat.id} src={chat.img} name={chat.name} msg={chat.msg} isActive={chat.online} time={chat.time} unread={chat.unread} selectedID={selectedID} setSelectedID={setSelectedID} />
+                      <Chat key={chat.id} id={chat.id} src={chat.img} name={chat.name} msg={chat.msg} isActive={chat.online} time={chat.time} unread={chat.unread} />
                     )
                   })
                 }
@@ -190,8 +189,8 @@ export default function Home() {
 
         <div className="w-full h-full">
           {
-            selectedID > -1 ?
-              <ChatScreen selectedID={selectedID} />
+            id > -1 ?
+              <ChatScreen selectedID={id} />
               :
               <DefaultScreen />
           }
@@ -201,12 +200,13 @@ export default function Home() {
 
       </div>
 
+
       {/* Contact Info */}
-      {isOpen &&
+      {id > -1 && open &&
 
-          <div className="w-[23%] h-screen">
-
-          </div>
+        <div className="w-[23%] h-screen bg-[#F8FAFF]">
+          <Contact open={open} />
+        </div>
 
       }
 

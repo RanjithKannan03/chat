@@ -1,5 +1,5 @@
-'use client';
+// 'use client';
 
-import { VideoCamera,Phone,MagnifyingGlass,CaretDown,CircleDashed,  FunnelSimple, Image,DownloadSimple,Link,Smiley,PaperPlaneTilt,ChatTeardropDots, Users, Gear } from 'phosphor-react';
+import { VideoCamera, Phone, MagnifyingGlass, CaretDown, CircleDashed, FunnelSimple, Image, DownloadSimple, Link, Smiley, PaperPlaneTilt, ChatTeardropDots, Users, Gear, XCircle,CaretRight,Star,Bell,Trash,Prohibit,ArrowLeft } from "@phosphor-icons/react/dist/ssr";;
 
-export {VideoCamera,Phone,MagnifyingGlass,CaretDown,CircleDashed, FunnelSimple, Image,DownloadSimple,Link,Smiley,PaperPlaneTilt,ChatTeardropDots, Users, Gear};
+export { VideoCamera, Phone, MagnifyingGlass, CaretDown, CircleDashed, FunnelSimple, Image, DownloadSimple, Link, Smiley, PaperPlaneTilt, ChatTeardropDots, Users, Gear, XCircle,CaretRight,Star,Bell,Trash,Prohibit,ArrowLeft };
