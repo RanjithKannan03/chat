@@ -70,6 +70,12 @@ const Options = () => {
 const TextMessage = (props) => {
   return (
     <div className={`flex gap-4 ${props.msg.incoming ? 'self-start' : 'self-end'}`}>
+
+      {
+        props.msg.options &&
+        <div className={`${props.msg.incoming ? 'hidden' : ''}`}><Options /></div>
+      }
+
       <div className={`flex flex-col gap-2 ${props.msg.incoming ? 'self-start' : 'self-end'}`}>
         <div className={`flex justify-center items-center p-4 rounded-3xl drop-shadow-lg  ${props.msg.incoming ? 'bg-white text-[#696969]' : 'bg-[#5B96F7] text-white'}`}>
           <span className='max-w-[450px]'>{props.msg.txt}</span>
@@ -77,7 +83,8 @@ const TextMessage = (props) => {
         <span className={`text-[#696969] text-sm px-2 ${props.msg.incoming ? 'self-start' : 'self-end'}`}>{props.msg.time}</span>
       </div>
       {
-        props.msg.options && <Options />
+        props.msg.options &&
+        <div className={`${props.msg.incoming ? '' : 'hidden'}`}><Options /></div>
       }
 
     </div>
@@ -87,6 +94,11 @@ const TextMessage = (props) => {
 const MediaMsg = (props) => {
   return (
     <div className={`flex gap-4 ${props.msg.incoming ? 'self-start' : 'self-end'}`}>
+
+      {
+        props.msg.options &&
+        <div className={`${props.msg.incoming ? 'hidden' : ''}`}><Options /></div>
+      }
 
       <div className={`flex flex-col gap-2 ${props.msg.incoming ? 'self-start' : 'self-end'}`}>
         <div className={`flex justify-center items-center rounded-3xl drop-shadow-lg overflow-hidden flex-col`}>
@@ -105,7 +117,8 @@ const MediaMsg = (props) => {
       </div>
 
       {
-        props.msg.options && <Options />
+        props.msg.options &&
+        <div className={`${props.msg.incoming ? '' : 'hidden'}`}><Options /></div>
       }
     </div>
   )
@@ -114,6 +127,11 @@ const MediaMsg = (props) => {
 const DocMsg = (props) => {
   return (
     <div className={`flex gap-4 ${props.msg.incoming ? 'self-start' : 'self-end'}`}>
+
+      {
+        props.msg.options &&
+        <div className={`${props.msg.incoming ? 'hidden' : ''}`}><Options /></div>
+      }
 
       <div className={`flex flex-col gap-2 ${props.msg.incoming ? 'self-start' : 'self-end'}`}>
         <div className={`flex rounded-3xl drop-shadow-lg overflow-hidden flex-col ${props.msg.incoming ? 'bg-white text-[#696969]' : 'bg-[#5B96F7] text-white'}`}>
@@ -133,7 +151,8 @@ const DocMsg = (props) => {
       </div>
 
       {
-        props.msg.options && <Options />
+        props.msg.options &&
+        <div className={`${props.msg.incoming ? '' : 'hidden'}`}><Options /></div>
       }
     </div>
   )
@@ -142,6 +161,11 @@ const DocMsg = (props) => {
 const LinkMsg = (props) => {
   return (
     <div className={`flex gap-4 ${props.msg.incoming ? 'self-start' : 'self-end'}`}>
+
+      {
+        props.msg.options &&
+        <div className={`${props.msg.incoming ? 'hidden' : ''}`}><Options /></div>
+      }
 
       <div className={`flex flex-col gap-2`}>
         <div className={`flex rounded-3xl drop-shadow-lg overflow-hidden flex-col ${props.msg.incoming ? 'bg-white text-[#696969]' : 'bg-[#5B96F7] text-white'}`}>
@@ -163,7 +187,8 @@ const LinkMsg = (props) => {
       </div>
 
       {
-        props.msg.options && <Options />
+        props.msg.options &&
+        <div className={`${props.msg.incoming ? '' : 'hidden'}`}><Options /></div>
       }
 
     </div>
@@ -173,6 +198,10 @@ const LinkMsg = (props) => {
 const ReplyMsg = (props) => {
   return (
     <div className={`flex gap-4 ${props.msg.incoming ? 'self-start' : 'self-end'}`}>
+      {
+        props.msg.options &&
+        <div className={`${props.msg.incoming ? 'hidden' : ''}`}><Options /></div>
+      }
       <div className={`flex flex-col gap-2`}>
         <div className={`flex justify-center items-center rounded-3xl drop-shadow-lg overflow-hidden flex-col ${props.msg.incoming ? 'bg-[#b6b2b2] text-[#696969]' : 'bg-[#4d80d2] text-white'}`}>
           <div className='flex py-2 px-4 items-center min-w-[200px] max-w-[450px] self-start gap-8'>
@@ -190,7 +219,8 @@ const ReplyMsg = (props) => {
       </div>
 
       {
-        props.msg.options && <Options />
+        props.msg.options &&
+        <div className={`${props.msg.incoming ? '' : 'hidden'}`}><Options /></div>
       }
 
     </div>

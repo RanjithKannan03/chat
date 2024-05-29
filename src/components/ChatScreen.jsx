@@ -202,6 +202,7 @@ const ChatScreen = (props) => {
                                 }
                             })}
                         </div>
+
                     </div>
 
                 </div>

@@ -1,14 +1,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const cardVariant={
-    initial:{
-        y:"100vh"
+const cardVariant = {
+    initial: {
+        opacity: 0,
+        y: "100vh"
     },
-    animate:{
-        y:0,
-        transition:{
-            duration:0.2
+    animate: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            duration: 0.2
         }
     }
 }
@@ -29,7 +31,7 @@ const Delete = (props) => {
 
                     <div className='flex gap-4 self-end'>
 
-                        <button className='text-[#5B96F7] font-semibold' onClick={()=>{props.setIsOpen(false)}}><span>Cancel</span></button>
+                        <button className='text-[#5B96F7] font-semibold' onClick={() => { props.setIsOpen(false) }}><span>Cancel</span></button>
                         <button className='text-[#5B96F7] font-semibold'><span>Yes</span></button>
 
                     </div>
