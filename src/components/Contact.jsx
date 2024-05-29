@@ -2,6 +2,7 @@ import React from 'react';
 import ContactInfo from './ContactInfo';
 import { selectedUserStore, sidebarStore } from '@/zustand/store';
 import SharedMessages from './SharedMessages';
+import Starred from './Starred';
 
 const Contact = (props) => {
 
@@ -9,7 +10,7 @@ const Contact = (props) => {
   const id = selectedUserStore((state) => state.id);
 
   return (
-    <div className='w-full h-full'>
+    <div className='w-full h-full bg-white'>
       {props.open &&
         (
           type === "CONTACT" ?
@@ -18,7 +19,7 @@ const Contact = (props) => {
             type === "MEDIA" ?
               <SharedMessages />
               :
-              null
+              <Starred/>
         )}
     </div>
   )

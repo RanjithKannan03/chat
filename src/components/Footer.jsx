@@ -51,9 +51,9 @@ const Footer = () => {
                     </AnimatePresence>
                 </div>
             </div>
-            <div className='flex items-center justify-center h-12 w-12 bg-[#5B96F7] text-white rounded-lg'>
+            <button className='flex items-center justify-center h-12 w-12 bg-[#5B96F7] text-white rounded-lg'>
                 <PaperPlaneTilt size={25} />
-            </div>
+            </button>
         </div>
     )
 }

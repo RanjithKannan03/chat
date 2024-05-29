@@ -4,6 +4,9 @@ import Image from 'next/image';
 import MuteSlider from './MuteSlider';
 import { faker } from '@faker-js/faker';
 import { sidebarStore } from '@/zustand/store';
+import Block from './Block';
+import { useState } from 'react';
+import Delete from './Delete';
 
 
 const ContactInfo = (props) => {
@@ -91,7 +94,9 @@ const ContactInfo = (props) => {
         },
     ];
     const toggle = sidebarStore((state) => state.toggle);
-    const setType = sidebarStore((state)=>state.setType);
+    const setType = sidebarStore((state) => state.setType);
+    const [isOpen, setIsOpen] = useState(false);
+    const [action, setAction] = useState("");
     return (
         <div className='flex flex-col gap-6 w-full h-full'>
             {/* Title */}
@@ -132,7 +137,7 @@ const ContactInfo = (props) => {
                     <div className='flex w-full justify-between items-center'>
                         <span className=''>Media, links and docs</span>
 
-                        <button className='flex gap-2 items-center' type='button' onClick={()=>{setType("MEDIA")}}>
+                        <button className='flex gap-2 items-center' type='button' onClick={() => { setType("MEDIA") }}>
                             <sapn className='text-sm text-center'>401</sapn>
                             <CaretRight size={25} />
                         </button>
@@ -164,7 +169,7 @@ const ContactInfo = (props) => {
                             <span>Starred Messages</span>
                         </div>
 
-                        <button><CaretRight size={25} /></button>
+                        <button type='button' onClick={() => { setType("STARRED") }}><CaretRight size={25} /></button>
 
                     </div>
 
@@ -225,14 +230,22 @@ const ContactInfo = (props) => {
                 {/* Block & Delete */}
 
                 <div className='flex-1 flex items-center gap-4 pb-2'>
-                    <button className='h-full w-1/2 flex items-center justify-center ring-1 rounded-xl bg-white ring-[#5B96F7] text-[#5B96F7] hover:bg-[#5B96F7] hover:text-white'>
+                    <button onClick={() => {
+                        setIsOpen((prev) => { return !prev });
+                        setAction("BLOCK");
+                    }}
+                        className='h-full w-1/2 flex items-center justify-center ring-1 rounded-xl bg-white ring-[#5B96F7] text-[#5B96F7] hover:bg-[#5B96F7] hover:text-white'>
                         <div className='flex gap-2 items-center '>
                             <Prohibit size={30} />
                             <span className='font-semibold'>Block</span>
                         </div>
                     </button>
 
-                    <button className='h-full w-1/2 flex items-center justify-center ring-1 rounded-xl bg-white ring-[#5B96F7] text-[#5B96F7] hover:bg-[#5B96F7] hover:text-white'>
+                    <button onClick={() => {
+                        setIsOpen((prev) => { return !prev });
+                        setAction("DELETE");
+                    }}
+                        className='h-full w-1/2 flex items-center justify-center ring-1 rounded-xl bg-white ring-[#5B96F7] text-[#5B96F7] hover:bg-[#5B96F7] hover:text-white'>
                         <div className='flex gap-2 items-center '>
                             <Trash size={30} />
                             <span className='font-semibold'>Delete</span>
@@ -241,7 +254,14 @@ const ContactInfo = (props) => {
                 </div>
 
 
+
+
             </div>
+
+            {
+                isOpen?action==="BLOCK"?<Block setIsOpen={setIsOpen}/>:<Delete setIsOpen={setIsOpen}/>:null
+            }
+
         </div>
     )
 }

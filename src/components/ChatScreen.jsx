@@ -1,5 +1,5 @@
 import React from 'react';
-import { DocMsg, LinkMsg, MediaMsg, TextMessage, TimeLine } from './Message';
+import { DocMsg, LinkMsg, MediaMsg, ReplyMsg, TextMessage, TimeLine } from './Message';
 import { faker } from '@faker-js/faker';
 import Footer from './Footer';
 import Header from './Header';
@@ -182,16 +182,19 @@ const ChatScreen = (props) => {
                             {Chat_History.map((chat) => {
                                 if (chat.type === 'msg') {
                                     if (chat.subtype === 'doc') {
-                                        return (<DocMsg msg={{ docName: "Abstract.png", txt: chat.message, incoming: chat.incoming, time: chat.time }} />)
+                                        return (<DocMsg msg={{ docName: "Abstract.png", txt: chat.message, incoming: chat.incoming, time: chat.time, options: true }} />)
                                     }
                                     else if (chat.subtype === 'img') {
-                                        return (<MediaMsg msg={{ url: chat.img, txt: chat.message, incoming: chat.incoming, time: chat.time }} />)
+                                        return (<MediaMsg msg={{ url: chat.img, txt: chat.message, incoming: chat.incoming, time: chat.time, options: true }} />)
                                     }
                                     else if (chat.subtype === 'link') {
-                                        return (<LinkMsg msg={{ link: chat.link, txt: chat.message, incoming: chat.incoming, time: chat.time }} />)
+                                        return (<LinkMsg msg={{ link: chat.link, txt: chat.message, incoming: chat.incoming, time: chat.time, options: true }} />)
+                                    }
+                                    else if (chat.subtype === 'reply') {
+                                        return (<ReplyMsg msg={{ txt: chat.message, reply: chat.reply, incoming: chat.incoming, time: chat.time, options: true }} />)
                                     }
                                     else {
-                                        return (<TextMessage msg={{ txt: chat.message, incoming: chat.incoming, time: chat.time }} />)
+                                        return (<TextMessage msg={{ txt: chat.message, incoming: chat.incoming, time: chat.time, options: true }} />)
                                     }
                                 }
                                 else {
