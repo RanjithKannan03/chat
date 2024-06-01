@@ -20,9 +20,9 @@ const Block = (props) => {
         <>
             <div className='w-screen h-screen bg-black opacity-50 absolute top-0 left-0 z-40' />
 
-            <div className='w-screen h-screen bg-transparent absolute top-0 left-0 z-50 flex justify-center items-center'>
+            <div className='w-screen h-screen bg-transparent absolute top-0 left-0 z-50 flex justify-center items-center' onClick={() => { props.setIsOpen(false) }}>
 
-                <motion.div variants={cardVariant} initial="initial" animate="animate" className='w-[30%] h-[20%] bg-white rounded-2xl flex flex-col p-8 justify-between'>
+                <motion.div variants={cardVariant} initial="initial" animate="animate" className='w-[30%] h-[20%] bg-white rounded-2xl flex flex-col p-8 justify-between' onClick={(e) => e.stopPropagation()}>
 
                     <div className='flex flex-col gap-2'>
                         <h1 className='text-black font-semibold text-lg'>Block this contact</h1>
