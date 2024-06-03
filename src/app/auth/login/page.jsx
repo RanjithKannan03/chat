@@ -4,6 +4,7 @@ import FormSubmitButton from '@/components/FormSubmitButton';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { Eye, EyeSlash, GoogleLogo, InstagramLogo } from '@/components/Icons';
+import Image from 'next/image';
 
 const page = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -11,14 +12,17 @@ const page = () => {
     <div className='w-full h-full flex justify-center items-center'>
       <div className='flex flex-col w-[30%] gap-4 text-black p-4'>
 
+        <div className='w-32 h-32 relative self-center'>
+
+          <Image src={'/assets/chirpify_logo.png'} fill className='object-contain' />
+
+        </div>
+
         <span className='font-semibold text-2xl'>Login to Chirpify</span>
 
         <span className=''>New User? <Link className='text-[#5B96F7] ' href={'/auth/register'}>Create an account</Link></span>
 
         <form className='flex flex-col gap-4'>
-
-
-
 
 
           <div className="relative  border border-gray-200  rounded-md w-full items-center px-2 py-1 focus-within:ring-1 focus-within:ring-black 0">

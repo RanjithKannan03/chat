@@ -22,8 +22,8 @@ const NavBar = () => {
             <div className='flex flex-col gap-8'>
 
                 {/* Icon */}
-                <div className='w-16 h-16 p-2 bg-[#AFBBF7] rounded-2xl relative flex justify-center items-center'>
-                    <Image src='/assets/icon.png' width={'40'} height={'40'} className='object-contain' />
+                <div className='w-14 h-14 relative flex'>
+                    <Image src='/assets/chirpify_logo.png' fill className='object-contain' />
                 </div>
 
                 {/* Navlinks */}
