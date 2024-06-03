@@ -6,32 +6,45 @@
 ::-webkit-scrollbar {
     width: 5px;
 }
- 
+
 /* Track */
 ::-webkit-scrollbar-track {
     background: #f1f1f1;
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
     background: #888;
     border-radius: 5px;
 }
- 
+
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
 
-::-webkit-scrollbar:horizontal{
+::-webkit-scrollbar:horizontal {
     display: none;
 }
 
 .hide-scrollbar {
     /* Hide scrollbar for IE, Edge, and Firefox */
     scrollbar-width: none;
+
     /* Hide scrollbar for WebKit browsers */
     &::-webkit-scrollbar {
-      display: none;
+        display: none;
     }
-  }
+}
+
+/* For modern browsers */
+#floating_outlined_email:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+    /* Change the color to match your background */
+}
+
+/* For Safari */
+#floating_outlined_email:-webkit-autofill {
+    -webkit-text-fill-color: #333;
+    /* Change the text color to ensure it's visible */
+}

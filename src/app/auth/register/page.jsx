@@ -26,14 +26,14 @@ const page = () => {
                     <div className='flex w-full justify-between items-center gap-4'>
 
                         <div className="relative  border border-gray-200  rounded-md w-full items-center px-2 py-1 focus-within:ring-1 focus-within:ring-black 0">
-                            <input type="text" id="floating_outlined_first" className="px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent  appearance-none focus:outline-0 dark:text-white peer" placeholder=" " />
+                            <input type="text" id="floating_outlined_first" name='firstName' className="px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent  appearance-none focus:outline-0 dark:text-white peer" placeholder=" " />
                             <label for="floating_outlined_first" className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-black peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
                                 First Name
                             </label>
                         </div>
 
                         <div className="relative  border border-gray-200  rounded-md w-full items-center px-2 py-1 focus-within:ring-1 focus-within:ring-black 0">
-                            <input type="text" id="floating_outlined_last" className="px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent  appearance-none focus:outline-0 dark:text-white peer" placeholder=" " />
+                            <input type="text" id="floating_outlined_last" name='lastName' className="px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent  appearance-none focus:outline-0 dark:text-white peer" placeholder=" " />
                             <label for="floating_outlined_last" className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-black peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
                                 Last Name
                             </label>
@@ -42,14 +42,14 @@ const page = () => {
                     </div>
 
                     <div className="relative  border border-gray-200  rounded-md w-full items-center px-2 py-1 focus-within:ring-1 focus-within:ring-black 0">
-                        <input type="text" id="floating_outlined_email" className="px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent  appearance-none focus:outline-0 dark:text-white peer" placeholder=" " />
+                        <input type="text" id="floating_outlined_email" name='email' className="px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent  appearance-none focus:outline-0 dark:text-white peer" placeholder=" " />
                         <label for="floating_outlined_email" className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-black peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
                             Email
                         </label>
                     </div>
 
                     <div className="relative  border border-gray-200  rounded-md w-full flex items-center px-2 py-1 focus-within:ring-1 focus-within:ring-black 0">
-                        <input type={`${showPassword ? 'text' : 'password'}`} autoComplete='off' id="floating_outlined_pass" className="flex-1 px-2.5 pb-2.5 pt-4 text-sm text-gray-900 bg-transparent  appearance-none focus:outline-0 dark:text-white peer" placeholder=" " />
+                        <input type={`${showPassword ? 'text' : 'password'}`} name='password' autoComplete='off' id="floating_outlined_pass" className="flex-1 px-2.5 pb-2.5 pt-4 text-sm text-gray-900 bg-transparent  appearance-none focus:outline-0 dark:text-white peer" placeholder=" " />
                         <button type='button' onClick={() => { setShowPassword((prev) => { return !prev }) }}>
                             {showPassword ?
                                 <Eye size={25} /> :
