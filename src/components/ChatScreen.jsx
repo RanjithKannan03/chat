@@ -174,7 +174,7 @@ const ChatScreen = (props) => {
                 </div>
 
                 {/* Chat */}
-                <div className='w-full h-[calc(100vh-10rem)] bg-[#F0F4FA] overflow-y-scroll hide-scrollbar'>
+                <div className='w-full h-[calc(100vh-10rem)] bg-[#F0F4FA] dark:bg-black overflow-y-scroll hide-scrollbar'>
 
                     <div className='flex'>
                         <div className='flex flex-col w-full p-4 gap-4'>

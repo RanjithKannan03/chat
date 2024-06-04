@@ -1,17 +1,16 @@
-'use client';
-
 import Chat from "@/components/Chat";
 import { CircleDashed } from "@/components/Icons";
 import { faker } from '@faker-js/faker';
 import ChatScreen from "@/components/ChatScreen";
 import Search from "@/components/Search";
 import DefaultScreen from "@/components/DefaultScreen";
-import { selectedUserStore, sidebarStore } from "@/zustand/store";
 import Contact from "@/components/Contact";
+import ChatContent from "@/components/ChatContent";
+import SideBar from "@/components/SideBar";
 
 export default function Home() {
   faker.seed(123);
-  const id = selectedUserStore((state) => state.id)
+
   const ChatList = [
     {
       id: 0,
@@ -95,7 +94,7 @@ export default function Home() {
     },
   ];
 
-  const open = sidebarStore((state) => state.open);
+
 
   return (
 
@@ -187,28 +186,15 @@ export default function Home() {
       {/* Chat Screen */}
       <div className="flex-1">
 
-        <div className="w-full h-full">
-          {
-            id > -1 ?
-              <ChatScreen selectedID={id} />
-              :
-              <DefaultScreen />
-          }
 
-        </div>
-
+        <ChatContent />
 
       </div>
 
 
       {/* Contact Info */}
-      {id > -1 && open &&
+      <SideBar />
 
-        <div className="w-[23%] h-screen bg-[#F8FAFF]">
-          <Contact open={open} />
-        </div>
-
-      }
 
     </div>
 

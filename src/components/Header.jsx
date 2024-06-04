@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { VideoCamera, Phone, MagnifyingGlass, CaretDown } from './Icons';
 import Image from 'next/image';

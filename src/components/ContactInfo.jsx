@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { XCircle, CaretRight, Star, Bell, Prohibit, Trash } from './Icons';
 import Image from 'next/image';
@@ -259,7 +261,7 @@ const ContactInfo = (props) => {
             </div>
 
             {
-                isOpen?action==="BLOCK"?<Block setIsOpen={setIsOpen}/>:<Delete setIsOpen={setIsOpen}/>:null
+                isOpen ? action === "BLOCK" ? <Block setIsOpen={setIsOpen} /> : <Delete setIsOpen={setIsOpen} /> : null
             }
 
         </div>

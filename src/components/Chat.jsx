@@ -1,3 +1,5 @@
+'use client';
+
 import { selectedUserStore } from '@/zustand/store';
 import Image from 'next/image'
 import React from 'react'
@@ -6,8 +8,8 @@ import React from 'react'
 
 const Chat = (props) => {
 
-    const id=selectedUserStore((state)=>state.id);
-    const setID=selectedUserStore((state)=>state.setID);
+    const id = selectedUserStore((state) => state.id);
+    const setID = selectedUserStore((state) => state.setID);
 
     function handleClick() {
         setID(props.id);
