@@ -17,10 +17,10 @@ const Chat = (props) => {
     return (
         <button type='button' onClick={handleClick}>
             <div className={`flex w-full h-20 ${id === props.id ? 'bg-[#5B96F7]' : 'bg-white'} rounded-md shrink-0 drop-shadow-lg  p-4`}>
-                <div className='flex w-full items-center gap-2'>
+                <div className='flex items-center w-full gap-2'>
                     {/* Profile Pic */}
                     <div className='w-1/4'>
-                        <div className='w-10 h-10 relative'>
+                        <div className='relative w-10 h-10'>
                             <Image src={props.src} fill className='object-contain rounded-full' alt='profile pic' />
                             {/* Online Status */}
                             <div className={`absolute h-3 w-3 rounded-full ${props.isActive ? 'bg-green-400' : 'bg-red-400'} bottom-0 right-0`} />
@@ -29,7 +29,7 @@ const Chat = (props) => {
 
 
                     {/* Name and message */}
-                    <div className='w-1/2 flex flex-col gap-1 items-start overflow-hidden'>
+                    <div className='flex flex-col items-start w-1/2 gap-1 overflow-hidden'>
                         {/* Name */}
                         <h1 className={`${id === props.id ? 'text-white' : 'text-black'} font-semibold text-sm text-start`}>{props.name}</h1>
                         {/* Message */}
@@ -38,7 +38,7 @@ const Chat = (props) => {
 
                     {/* Time and Number of messages */}
 
-                    <div className='w-1/4 flex flex-col gap-1 items-center'>
+                    <div className='flex flex-col items-center w-1/4 gap-1'>
                         {/* Time */}
                         <span className={`${id === props.id ? 'text-white' : 'text-black'} text-sm`}>{props.time}</span>
 

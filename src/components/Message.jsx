@@ -41,7 +41,7 @@ const Options = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className='relative py-2'>
-      <button className='flex flex-col relative w-4 h-8 items-center gap-1' onClick={() => { setIsOpen((prev) => { return !prev }) }}>
+      <button className='relative flex flex-col items-center w-4 h-8 gap-1' onClick={() => { setIsOpen((prev) => { return !prev }) }}>
         <div className='w-[3px] h-[3px] rounded-full bg-[#696969]' />
         <div className='w-[3px] h-[3px] rounded-full bg-[#696969]' />
         <div className='w-[3px] h-[3px] rounded-full bg-[#696969]' />
@@ -52,7 +52,7 @@ const Options = () => {
           <button className='absolute flex top-3 left-1' onClick={() => { setIsOpen((prev) => { return !prev }) }}>
             <X size={20} />
           </button>
-          <div className=' flex flex-col justify-center gap-4'>
+          <div className='flex flex-col justify-center gap-4 '>
             {
               Message_options.map((option) => {
                 return (
@@ -231,7 +231,7 @@ const ReplyMsg = (props) => {
 
 const TimeLine = (props) => {
   return (
-    <div className='w-full flex gap-4 items-center'>
+    <div className='flex items-center w-full gap-4'>
       <div className='flex-1 h-[1px] bg-[#696969]' />
       <span className='text-[#696969]'>{props.date}</span>
       <div className='flex-1 h-[1px] bg-[#696969]' />

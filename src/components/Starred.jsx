@@ -85,11 +85,11 @@ const Starred = () => {
     ];
     const setType = sidebarStore((state) => state.setType);
     return (
-        <div className='flex flex-col gap-6 w-full h-full'>
+        <div className='flex flex-col w-full h-full gap-6'>
 
             {/* Header */}
             <div>
-                <div className='w-full h-20 flex px-4 items-center text-black gap-8 shadow'>
+                <div className='flex items-center w-full h-20 gap-8 px-4 text-black shadow'>
                     <button type='button' onClick={() => (setType("CONTACT"))}><ArrowLeft size={25} /></button>
                     <span>Starred Messages</span>
                 </div>
@@ -99,7 +99,7 @@ const Starred = () => {
             <div className='flex-1 overflow-y-scroll hide-scrollbar'>
 
                 <div className='flex'>
-                    <div className='flex flex-col w-full p-4 gap-4'>
+                    <div className='flex flex-col w-full gap-4 p-4'>
 
                         {Chat_History.map((chat) => {
                             if (chat.type === 'msg') {

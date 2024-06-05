@@ -11,7 +11,7 @@ const NavBar = () => {
             <div className='flex flex-col gap-8'>
 
                 {/* Icon */}
-                <div className='w-14 h-14 relative flex'>
+                <div className='relative flex w-14 h-14'>
                     <Image src='/assets/chirpify_logo.png' fill className='object-contain' />
                 </div>
 
@@ -24,7 +24,7 @@ const NavBar = () => {
             </div>
 
 
-            <div className='flex flex-col gap-8 items-center'>
+            <div className='flex flex-col items-center gap-8'>
 
                 {/* Dark mode Toggle */}
                 <div>
@@ -32,7 +32,7 @@ const NavBar = () => {
                 </div>
 
                 {/* Profile Pic */}
-                <div className='w-12 h-12 rounded-full relative'>
+                <div className='relative w-12 h-12 rounded-full'>
                     <button>
                         <Image src='/assets/default.png' fill className='object-contain' />
                     </button>

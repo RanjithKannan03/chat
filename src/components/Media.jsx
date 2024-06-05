@@ -23,7 +23,7 @@ const Media = () => {
     ]
     faker.seed(123);
     return (
-        <div className='h-full w-full p-4 flex flex-col'>
+        <div className='flex flex-col w-full h-full p-4'>
             {mediaData.map((el, index) => {
                 return (
                     <div key={index} className='flex flex-col w-full'>

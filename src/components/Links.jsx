@@ -80,7 +80,7 @@ const Links = () => {
     ];
 
     return (
-        <div className='h-full w-full p-4 flex flex-col gap-8'>
+        <div className='flex flex-col w-full h-full gap-8 p-4'>
             {Shared_links.map((link) => {
                 return (
                     <div className='w-full'>

@@ -62,7 +62,7 @@ const Docs = () => {
     ];
     return (
 
-        <div className='h-full w-full p-4 flex flex-col gap-8'>
+        <div className='flex flex-col w-full h-full gap-8 p-4'>
             {Shared_docs.map((chat) => {
                 return (
                     <div className='w-full'>

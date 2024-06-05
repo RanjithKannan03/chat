@@ -106,11 +106,11 @@ export default function Home() {
 
         {/* Options */}
         <div className="h-auto">
-          <div className="flex flex-col w-full gap-8 h-full">
+          <div className="flex flex-col w-full h-full gap-8">
 
             {/* Title */}
-            <div className="flex justify-between items-center w-full">
-              <h1 className="font-bold text-4xl">Chats</h1>
+            <div className="flex items-center justify-between w-full">
+              <h1 className="text-4xl font-bold">Chats</h1>
               <button><CircleDashed size={25} /></button>
             </div>
 
@@ -133,12 +133,12 @@ export default function Home() {
 
         {/* Contacts List */}
 
-        <div className="w-full flex-1 flex flex-col gap-4">
+        <div className="flex flex-col flex-1 w-full gap-4">
           {/* Pinned */}
-          <div className="h-1/3 flex flex-col gap-2">
+          <div className="flex flex-col gap-2 h-1/3">
             <span>Pinned</span>
 
-            <div className="flex flex-1 w-full overflow-y-scroll py-2">
+            <div className="flex flex-1 w-full py-2 overflow-y-scroll">
 
               <div className="flex flex-col w-full h-[200px] gap-4 pr-2 pb-2">
                 {
@@ -156,10 +156,10 @@ export default function Home() {
           </div>
 
           {/* All Messages */}
-          <div className="h-2/3 flex flex-col gap-2">
+          <div className="flex flex-col gap-2 h-2/3">
             <span>All Messages</span>
 
-            <div className="flex flex-1 w-full overflow-y-scroll py-2">
+            <div className="flex flex-1 w-full py-2 overflow-y-scroll">
 
               <div className="flex flex-col w-full h-[200px] gap-4 pr-2 pb-2">
                 {

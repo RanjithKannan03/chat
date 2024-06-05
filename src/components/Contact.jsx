@@ -19,7 +19,7 @@ const Contact = (props) => {
             type === "MEDIA" ?
               <SharedMessages />
               :
-              <Starred/>
+              <Starred />
         )}
     </div>
   )

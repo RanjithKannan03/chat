@@ -9,53 +9,53 @@ import Media from './Media';
 import Links from './Links';
 import Docs from './Docs';
 
-const options=['Media','Links','Docs'];
+const options = ['Media', 'Links', 'Docs'];
 
 
 
 const SharedMessages = () => {
-    
+
     const setType = sidebarStore((state) => state.setType)
     const [option, setOption] = useState("Media");
     return (
-        <div className='flex flex-col gap-6 w-full h-full'>
+        <div className='flex flex-col w-full h-full gap-6'>
 
             {/* Header */}
-            <div className='w-full h-20 flex px-4 items-center text-black gap-8 shadow'>
+            <div className='flex items-center w-full h-20 gap-8 px-4 text-black shadow'>
                 <button type='button' onClick={() => (setType("CONTACT"))}><ArrowLeft size={25} /></button>
                 <span>Shared Messages</span>
             </div>
 
             {/* Titles */}
-            <div className='w-full px-8 flex items-center justify-between font-semibold'>
+            <div className='flex items-center justify-between w-full px-8 font-semibold'>
 
-            {options.map((el,index)=>{
-                return(
-                        <button type='button' key={index} onClick={()=>{setOption(el)}} className={`${option===el?'text-[#5B96F7]':'text-black'} relative`}>
-                        <span>{el}</span>
-                        {option===el?
-                        <motion.div layoutId='option-pill' className='absolute -bottom-1 bg-[#5B96F7] h-[2px] w-full'/>
-                        :
-                        null}
+                {options.map((el, index) => {
+                    return (
+                        <button type='button' key={index} onClick={() => { setOption(el) }} className={`${option === el ? 'text-[#5B96F7]' : 'text-black'} relative`}>
+                            <span>{el}</span>
+                            {option === el ?
+                                <motion.div layoutId='option-pill' className='absolute -bottom-1 bg-[#5B96F7] h-[2px] w-full' />
+                                :
+                                null}
                         </button>
-                )
-            })}
-            
+                    )
+                })}
+
 
             </div>
 
             <div className='flex-1 overflow-y-scroll'>
-            
-            {option==="Media"?
-            <Media/>:
-            option==="Links"?
-            <Links/>
-            :
-            <Docs/>
-            }
+
+                {option === "Media" ?
+                    <Media /> :
+                    option === "Links" ?
+                        <Links />
+                        :
+                        <Docs />
+                }
 
             </div>
-            
+
 
         </div>
     )

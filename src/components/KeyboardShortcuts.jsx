@@ -77,18 +77,18 @@ const KeyboardShortcuts = (props) => {
     ]
     return (
         <>
-            <div className='w-screen h-screen absolute top-0 left-0 bg-black opacity-50 z-30' />
-            <div className='w-screen h-screen absolute top-0 left-0 bg-transparent z-40 flex justify-center items-center' onClick={() => { props.setShowShortcuts(false) }}>
+            <div className='absolute top-0 left-0 z-30 w-screen h-screen bg-black opacity-50' />
+            <div className='absolute top-0 left-0 z-40 flex items-center justify-center w-screen h-screen bg-transparent' onClick={() => { props.setShowShortcuts(false) }}>
 
                 <motion.div variants={cardVariant} initial="initial" animate="animate" className='bg-white p-8 flex flex-col gap-8 rounded-2xl w-[60%]' onClick={(e) => { e.stopPropagation() }}>
 
-                    <span className='font-semibold text-xl'>Keyboard Shortcuts</span>
+                    <span className='text-xl font-semibold'>Keyboard Shortcuts</span>
 
-                    <div className='grid grid-cols-2 w-full gap-10'>
+                    <div className='grid w-full grid-cols-2 gap-10'>
 
                         {shortcuts.map((shortcut, index) => {
                             return (
-                                <div key={index} className='flex w-full justify-between items-center'>
+                                <div key={index} className='flex items-center justify-between w-full'>
 
                                     <span>{shortcut.name}</span>
 

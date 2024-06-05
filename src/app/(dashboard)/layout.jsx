@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
         <html lang="en" suppressHydrationWarning>
             <body className={inter.className}>
                 <Providers>
-                    <div className="w-screen h-screen flex">
+                    <div className="flex w-screen h-screen">
                         <div className="w-20">
                             <NavBar />
                         </div>

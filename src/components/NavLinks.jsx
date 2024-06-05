@@ -17,7 +17,7 @@ const links = [
 
 const NavLinks = () => {
     const path = usePathname();
-    return <div className='flex flex-col gap-8 grow-0 items-center'>
+    return <div className='flex flex-col items-center gap-8 grow-0'>
 
         {links.map((link) => {
             return (

@@ -177,7 +177,7 @@ const ChatScreen = (props) => {
                 <div className='w-full h-[calc(100vh-10rem)] bg-[#F0F4FA] dark:bg-black overflow-y-scroll hide-scrollbar'>
 
                     <div className='flex'>
-                        <div className='flex flex-col w-full p-4 gap-4'>
+                        <div className='flex flex-col w-full gap-4 p-4'>
 
                             {Chat_History.map((chat) => {
                                 if (chat.type === 'msg') {

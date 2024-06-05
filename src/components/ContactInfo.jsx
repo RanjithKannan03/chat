@@ -100,19 +100,19 @@ const ContactInfo = (props) => {
     const [isOpen, setIsOpen] = useState(false);
     const [action, setAction] = useState("");
     return (
-        <div className='flex flex-col gap-6 w-full h-full'>
+        <div className='flex flex-col w-full h-full gap-6'>
             {/* Title */}
-            <div className='w-full h-20 flex px-4 items-center text-black gap-8 shadow '>
+            <div className='flex items-center w-full h-20 gap-8 px-4 text-black shadow '>
                 <button type='button' onClick={toggle}><XCircle size={25} /></button>
                 <span className='text-lg'>Contact Info</span>
             </div>
 
             {/* Details */}
-            <div className='w-full flex-1 flex flex-col px-4 gap-4'>
+            <div className='flex flex-col flex-1 w-full gap-4 px-4'>
                 {/* Profile Pic and Name */}
-                <div className='flex  items-center gap-8 py-6'>
+                <div className='flex items-center gap-8 py-6'>
 
-                    <div className='w-16 h-16 relative'>
+                    <div className='relative w-16 h-16'>
                         <Image src={ChatList[props.selectedID].img} alt="profile_pic" fill className='object-contain rounded-full ' />
                     </div>
 
@@ -126,7 +126,7 @@ const ContactInfo = (props) => {
                 <div className='w-full h-[0.5px] bg-[#A4A4A4]' />
 
                 {/* About */}
-                <div className='flex flex-col gap-4 text-black py-2'>
+                <div className='flex flex-col gap-4 py-2 text-black'>
                     <span className=''>About</span>
                     <span className='font-medium'>Hi there</span>
                 </div>
@@ -134,22 +134,22 @@ const ContactInfo = (props) => {
                 <div className='w-full h-[0.5px] bg-[#A4A4A4]' />
 
                 {/* Media,Links & Docs */}
-                <div className='flex flex-col gap-4 text-black py-2'>
+                <div className='flex flex-col gap-4 py-2 text-black'>
 
-                    <div className='flex w-full justify-between items-center'>
+                    <div className='flex items-center justify-between w-full'>
                         <span className=''>Media, links and docs</span>
 
-                        <button className='flex gap-2 items-center' type='button' onClick={() => { setType("MEDIA") }}>
+                        <button className='flex items-center gap-2' type='button' onClick={() => { setType("MEDIA") }}>
                             <sapn className='text-sm text-center'>401</sapn>
                             <CaretRight size={25} />
                         </button>
 
                     </div>
 
-                    <div className='flex justify-between w-full items-center'>
+                    <div className='flex items-center justify-between w-full'>
                         {[1, 2, 3].map((el) => {
                             return (
-                                <div className='min-w-24 min-h-24 max-w-24 max-h-24 relative'>
+                                <div className='relative min-w-24 min-h-24 max-w-24 max-h-24'>
                                     <Image src={faker.image.url()} alt='media' fill className='object-contain' />
                                 </div>
                             )
@@ -165,7 +165,7 @@ const ContactInfo = (props) => {
 
                 <div className='flex flex-col gap-4 py-2'>
 
-                    <div className='flex w-full justify-between'>
+                    <div className='flex justify-between w-full'>
                         <div className='flex gap-4'>
                             <Star size={25} />
                             <span>Starred Messages</span>
@@ -182,7 +182,7 @@ const ContactInfo = (props) => {
                 {/* Mute Notififications */}
                 <div className='flex flex-col gap-4 py-2'>
 
-                    <div className='flex w-full justify-between'>
+                    <div className='flex justify-between w-full'>
                         <div className='flex gap-4'>
                             <Bell size={25} />
                             <span>Mute Notifications</span>
@@ -200,23 +200,23 @@ const ContactInfo = (props) => {
 
                 {/* Common Groups */}
 
-                <div className='flex flex-col gap-4 py-2 w-full'>
+                <div className='flex flex-col w-full gap-4 py-2'>
 
                     <span>3 groups in common</span>
 
-                    <div className='flex w-full h-28 overflow-y-scroll items-center'>
+                    <div className='flex items-center w-full overflow-y-scroll h-28'>
 
-                        <div className='w-full h-24 flex flex-col gap-6'>
+                        <div className='flex flex-col w-full h-24 gap-6'>
 
                             {[1, 2, 3].map((el) => {
                                 return (
-                                    <div className='w-full h-20 flex gap-4 items-center'>
-                                        <div className='min-w-12 min-h-12 max-w-12 max-h-12 relative'>
+                                    <div className='flex items-center w-full h-20 gap-4'>
+                                        <div className='relative min-w-12 min-h-12 max-w-12 max-h-12'>
                                             <Image src={faker.image.avatar()} alt='media' fill className='object-contain rounded-full' />
                                         </div>
 
-                                        <div className='flex flex-col justify-center h-full flex-1 text-black overflow-hidden'>
-                                            <span className='font-medium text-lg'>Name</span>
+                                        <div className='flex flex-col justify-center flex-1 h-full overflow-hidden text-black'>
+                                            <span className='text-lg font-medium'>Name</span>
                                             <span className='text-sm whitespace-nowrap'>Owl, Parrot, Rabbit , You</span>
                                         </div>
                                     </div>
@@ -231,13 +231,13 @@ const ContactInfo = (props) => {
 
                 {/* Block & Delete */}
 
-                <div className='flex-1 flex items-center gap-4 pb-2'>
+                <div className='flex items-center flex-1 gap-4 pb-2'>
                     <button onClick={() => {
                         setIsOpen((prev) => { return !prev });
                         setAction("BLOCK");
                     }}
                         className='h-full w-1/2 flex items-center justify-center ring-1 rounded-xl bg-white ring-[#5B96F7] text-[#5B96F7] hover:bg-[#5B96F7] hover:text-white'>
-                        <div className='flex gap-2 items-center '>
+                        <div className='flex items-center gap-2 '>
                             <Prohibit size={30} />
                             <span className='font-semibold'>Block</span>
                         </div>
@@ -248,7 +248,7 @@ const ContactInfo = (props) => {
                         setAction("DELETE");
                     }}
                         className='h-full w-1/2 flex items-center justify-center ring-1 rounded-xl bg-white ring-[#5B96F7] text-[#5B96F7] hover:bg-[#5B96F7] hover:text-white'>
-                        <div className='flex gap-2 items-center '>
+                        <div className='flex items-center gap-2 '>
                             <Trash size={30} />
                             <span className='font-semibold'>Delete</span>
                         </div>
