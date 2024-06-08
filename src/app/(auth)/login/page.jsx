@@ -3,12 +3,15 @@
 import FormSubmitButton from "@/components/FormSubmitButton";
 import Link from "next/link";
 import React, { useState } from "react";
-import { Eye, EyeSlash, GoogleLogo, InstagramLogo } from "@/components/Icons";
+import { Eye, EyeSlash, GoogleLogo, MetaLogo } from "@/components/Icons";
 import Image from "next/image";
 import { login } from "@/lib/auth";
+import { useFormState } from 'react-dom';
+
 
 const page = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [state, formAction] = useFormState(login, { error: null })
   return (
     <div className="flex items-center justify-center w-full h-full">
       <div className="flex w-[30%] flex-col gap-4 p-4 text-black">
@@ -23,6 +26,8 @@ const page = () => {
 
         <span className="text-2xl font-semibold">Login to Chirpify</span>
 
+        {state.error && <span>{state.error}</span>}
+
         <span className="">
           New User?{" "}
           <Link className="text-[#5B96F7]" href={"/register"}>
@@ -30,7 +35,7 @@ const page = () => {
           </Link>
         </span>
 
-        <form className="flex flex-col gap-4" action={login}>
+        <form className="flex flex-col gap-4" action={formAction}>
           <div className="relative items-center w-full px-2 py-1 border border-gray-200 rounded-md 0 focus-within:ring-1 focus-within:ring-black">
             <input
               type="text"
@@ -95,9 +100,9 @@ const page = () => {
           </div>
 
           <div className="flex items-center gap-2 rounded-lg bg-transparent px-4 py-2 font-medium text-[#5B96F7] ring-2 ring-[#5B96F7]">
-            <InstagramLogo size={25} weight="bold" />
+            <MetaLogo size={25} weight="bold" />
 
-            <span>Sign in with Instagram</span>
+            <span>Sign in with Meta</span>
           </div>
         </div>
       </div>
