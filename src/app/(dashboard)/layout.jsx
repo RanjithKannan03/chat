@@ -2,8 +2,8 @@ import { Inter } from "next/font/google";
 import "../globals.css";
 import NavBar from "@/components/navbar";
 import Providers from "@/components/Providers";
-import axios from "axios";
-import { redirect } from "next/navigation";
+import SessionHandler from "@/components/SessionHandler";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,24 +13,21 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-    const response = await axios.get('http://localhost:8000/isAuthenticated');
-    console.log(response.data.message);
-    if (!response.data.message) {
-        redirect('/login');
-    }
     return (
         <html lang="en" suppressHydrationWarning>
             <body className={inter.className}>
-                <Providers>
-                    <div className="flex w-screen h-screen">
-                        <div className="w-20">
-                            <NavBar />
+                <SessionHandler>
+                    <Providers>
+                        <div className="flex w-screen h-screen">
+                            <div className="w-20">
+                                <NavBar />
+                            </div>
+                            <div className="w-[calc(100vw-5rem)]">
+                                {children}
+                            </div>
                         </div>
-                        <div className="w-[calc(100vw-5rem)]">
-                            {children}
-                        </div>
-                    </div>
-                </Providers>
+                    </Providers>
+                </SessionHandler>
             </body>
         </html>
     );

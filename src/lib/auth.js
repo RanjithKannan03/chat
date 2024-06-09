@@ -1,6 +1,7 @@
-'use server';
+'use client';
 import axios from "axios";
 import { redirect } from "next/navigation";
+
 
 function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -9,19 +10,23 @@ function isValidEmail(email) {
 
 export async function login(prevState, formData) {
     const user = {
-        email: formData.get('email'),
+        username: formData.get('email'),
         password: formData.get('password')
     }
     console.log(user);
-    if (!user.email || user.email.trim().length === 0) {
+    if (!user.username || user.username.trim().length === 0) {
         return { error: "Email and password fields cannot be empty. Please enter your credentials." };
     }
     if (!user.password || user.password.trim().length === 0) {
         return { error: "Email and password fields cannot be empty. Please enter your credentials." };
     }
     const response = await axios.post('http://localhost:8000/login', { ...user }, {
-        'Content-Type': 'application/json'
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        withCredentials: true
     });
+    console.log(response);
     if (response.status != 200) {
         throw new Error("Please try again later.")
     }
@@ -49,7 +54,10 @@ export async function register(prevState, formData) {
         return { error: "The passwords you entered do not match. Please try again." }
     }
     const response = await axios.post('http://localhost:8000/register', { ...user }, {
-        'Content-Type': 'application/json'
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        withCredentials: true
     });
     if (response.status != 200) {
         throw new Error("Please try again later.")
@@ -64,3 +72,4 @@ export async function register(prevState, formData) {
         }
     }
 }
+

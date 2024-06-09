@@ -12,7 +12,7 @@ const NavBar = () => {
 
                 {/* Icon */}
                 <div className='relative flex w-14 h-14'>
-                    <Image src='/assets/chirpify_logo.png' fill className='object-contain' />
+                    <Image src='/assets/chirpify_logo.png' fill className='object-contain' alt='logo' />
                 </div>
 
                 {/* Navlinks */}
@@ -34,7 +34,7 @@ const NavBar = () => {
                 {/* Profile Pic */}
                 <div className='relative w-12 h-12 rounded-full'>
                     <button>
-                        <Image src='/assets/default.png' fill className='object-contain' />
+                        <Image src='/assets/default.png' fill className='object-contain' alt='profile_pic' />
                     </button>
                 </div>
             </div>

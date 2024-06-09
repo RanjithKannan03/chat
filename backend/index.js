@@ -5,8 +5,9 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import User from './models/user.js';
 import bcrypt from 'bcrypt';
-import isValidEmail from './lib/email.js';
-
+import session from 'express-session';
+import passport from 'passport';
+import { Strategy } from 'passport-local';
 
 const app = express();
 const port = process.env.PORT || 8000;
@@ -14,7 +15,30 @@ const saltRounds = 10
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
+const corsConfig = {
+    origin: 'http://localhost:3000',
+    credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization'],
+};
+app.use(cors(corsConfig));
+
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        maxAge: 1000 * 60 * 60, // 1 hour
+        // Remove the domain attribute for localhost
+        httpOnly: true,
+        sameSite: 'lax',
+        secure: false // Make sure this is false for development without HTTPS
+    },
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+
 
 mongoose.connect("mongodb://127.0.0.1:27017/chripifyDB");
 
@@ -52,7 +76,15 @@ app.post('/register', async (req, res) => {
                     username: username
                 });
                 newUser.save();
-                return res.status(200).json({ message: "success" });
+                req.login(newUser, (err) => {
+                    if (err) {
+                        console.log(err);
+                        return res.status(500).json({ message: "Please try again later." });
+                    }
+                    else {
+                        return res.status(200).json({ message: "success" });
+                    }
+                });
             }
         })
     }
@@ -62,41 +94,75 @@ app.post('/register', async (req, res) => {
     }
 });
 
-app.post('/login', async (req, res) => {
-    console.log(req.body);
-    const email = req.body.email;
-    const password = req.body.password;
-    try {
-        const user = await User.findOne({ email: email });
+app.post('/login', function (req, res, next) {
+    passport.authenticate('local', { failureMessage: true }, function (err, user, info) {
+        if (err) { return next(err); }
         if (!user) {
-            return res.status(200).json({ message: "No account found with this email address. Please check the email or register for a new account." });
+            return res.status(200).json({ message: info.message });
         }
-
-        bcrypt.compare(password, user.password, (err, success) => {
+        req.login(user, (err) => {
             if (err) {
                 console.log(err);
                 return res.status(500).json({ message: "Please try again later." });
             }
             else {
+                console.log(req.isAuthenticated());
+                return res.status(200).json({ message: "success" });
+            }
+        })
+    })(req, res, next);
+});
+
+app.get('/isAuthenticated', (req, res) => {
+    console.log(req.user);
+    console.log(req.isAuthenticated());
+    if (req.isAuthenticated()) {
+        console.log("hi");
+        return res.status(200).json({ message: true });
+    }
+    else {
+        return res.status(200).json({ message: false });
+    }
+});
+
+
+// passport local strategy
+
+passport.use(new Strategy(async function verify(username, password, cb) {
+    try {
+        const user = await User.findOne({ email: username });
+        if (!user) {
+            return cb(null, false, { message: "No account found with this email address. Please check the email or register for a new account." });
+        }
+
+        bcrypt.compare(password, user.password, (err, success) => {
+            if (err) {
+                console.log(err);
+                return cb(err);
+            }
+            else {
                 if (success) {
-                    return res.status(200).json({ message: "success" });
+                    return cb(null, user);
                 }
                 else {
-                    return res.status(200).json({ message: "The password you entered is incorrect. Please try again." })
+                    return cb(null, false, { message: "The password you entered is incorrect. Please try again." });
                 }
             }
         });
     }
     catch (err) {
         console.log(err);
-        return res.status(500).json({ message: "Please try again later." });
+        return cb(err);
     }
+}));
 
+passport.serializeUser((user, cb) => {
+    cb(null, user);
 });
 
-app.get('/isAuthenticated', (req, res) => {
-    return res.status(200).json({ message: false });
-})
+passport.deserializeUser((user, cb) => {
+    cb(null, user);
+});
 
 
 app.listen(port, () => {
