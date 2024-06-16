@@ -8,10 +8,16 @@ import bcrypt from 'bcrypt';
 import session from 'express-session';
 import passport from 'passport';
 import { Strategy } from 'passport-local';
+import { connect } from 'getstream';
+import { StreamChat } from 'stream-chat';
 
 const app = express();
 const port = process.env.PORT || 8000;
 const saltRounds = 10
+
+const app_id = process.env.STREAM_APP_ID;
+const api_key = process.env.STREAM_API_KEY;
+const api_secret = process.env.STREAM_API_SECRET;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -116,9 +122,20 @@ app.post('/login', function (req, res, next) {
 app.get('/isAuthenticated', (req, res) => {
     console.log(req.user);
     console.log(req.isAuthenticated());
+    const serverClient = connect(api_key, api_secret, app_id);
     if (req.isAuthenticated()) {
-        console.log("hi");
-        return res.status(200).json({ message: true });
+        console.log(req.user);
+        const token = serverClient.createUserToken(req.user._id);
+        const user = {
+            id: req.user._id,
+            token: token,
+            email: req.user.email,
+            username: req.user.username,
+            avatarURL: req.user.avatarURL,
+            status: req.user.status,
+            pinnedChannels: req.user.pinnedChannels
+        };
+        return res.status(200).json({ message: true, user: user });
     }
     else {
         return res.status(200).json({ message: false });

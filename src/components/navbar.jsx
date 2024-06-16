@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import NavLinks from './NavLinks';
 import ToggleDark from './ToggleDark';
+import UserAvatar from './UserAvatar';
 
 
 const NavBar = () => {
@@ -32,9 +33,9 @@ const NavBar = () => {
                 </div>
 
                 {/* Profile Pic */}
-                <div className='relative w-12 h-12 rounded-full'>
+                <div className='relative w-12 h-12'>
                     <button>
-                        <Image src='/assets/default.png' fill className='object-contain' alt='profile_pic' />
+                        <UserAvatar />
                     </button>
                 </div>
             </div>

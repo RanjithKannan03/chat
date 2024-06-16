@@ -4,47 +4,57 @@
 
 /* width */
 ::-webkit-scrollbar {
-    width: 5px;
+  width: 5px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+  background: #f1f1f1;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 5px;
+  background: #888;
+  border-radius: 5px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+  background: #555;
 }
 
 ::-webkit-scrollbar:horizontal {
-    display: none;
+  display: none;
 }
 
 .hide-scrollbar {
-    /* Hide scrollbar for IE, Edge, and Firefox */
-    scrollbar-width: none;
+  /* Hide scrollbar for IE, Edge, and Firefox */
+  scrollbar-width: none;
 
-    /* Hide scrollbar for WebKit browsers */
-    &::-webkit-scrollbar {
-        display: none;
-    }
+  /* Hide scrollbar for WebKit browsers */
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 /* For modern browsers */
 #floating_outlined_email:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 30px white inset !important;
-    /* Change the color to match your background */
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  /* Change the color to match your background */
+}
+
+#floating_outlined_username:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  /* Change the color to match your background */
 }
 
 /* For Safari */
 #floating_outlined_email:-webkit-autofill {
-    -webkit-text-fill-color: #333;
-    /* Change the text color to ensure it's visible */
+  -webkit-text-fill-color: #333;
+  /* Change the text color to ensure it's visible */
+}
+
+#floating_outlined_username:-webkit-autofill {
+  -webkit-text-fill-color: #333;
+  /* Change the text color to ensure it's visible */
 }

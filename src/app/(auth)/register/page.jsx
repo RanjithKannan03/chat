@@ -7,6 +7,7 @@ import FormSubmitButton from '@/components/FormSubmitButton';
 import Image from 'next/image';
 import { register } from '@/lib/auth';
 import { useFormState } from 'react-dom';
+import logo from '../../../../public/assets/chirpify_logo.png';
 
 const page = () => {
     const [showPassword1, setShowPassword1] = useState(false);
@@ -18,7 +19,7 @@ const page = () => {
 
                 <div className='relative self-center w-32 h-32'>
 
-                    <Image src={'/assets/chirpify_logo.png'} fill className='object-contain' alt='logo' />
+                    <Image src={logo} className='object-contain' alt='logo' />
 
                 </div>
 

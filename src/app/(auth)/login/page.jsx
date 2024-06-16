@@ -7,6 +7,7 @@ import { Eye, EyeSlash, GoogleLogo, MetaLogo } from "@/components/Icons";
 import Image from "next/image";
 import { login } from "@/lib/auth";
 import { useFormState } from 'react-dom';
+import logo from '../../../../public/assets/chirpify_logo.png';
 
 
 const page = () => {
@@ -17,9 +18,7 @@ const page = () => {
       <div className="flex w-[30%] flex-col gap-4 p-4 text-black">
         <div className="relative self-center w-32 h-32">
           <Image
-            src={"/assets/chirpify_logo.png"}
-            fill
-            className="object-contain"
+            src={logo}
             alt="logo"
           />
         </div>

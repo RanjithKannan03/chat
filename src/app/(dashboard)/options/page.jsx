@@ -1,16 +1,18 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Bell, CaretLeft, Lock, Image as Img, Key, Clipboard, Article, WarningCircle } from '@/components/Icons';
+import { Bell, CaretLeft, Lock, Image as Img, Key, Clipboard, Article, WarningCircle, PencilSimple } from '@/components/Icons';
 import Link from 'next/link';
 import Image from 'next/image';
 import { faker } from '@faker-js/faker';
 import KeyboardShortcuts from '@/components/KeyboardShortcuts';
+import { userStore } from '@/zustand/store';
 
 
 
 const page = () => {
   const [showShortcuts, setShowShortcuts] = useState(false);
+  const user = userStore((state) => state.user);
   const optionsList = [
     {
       name: "Notifications",
@@ -64,20 +66,23 @@ const page = () => {
           <div className='flex items-center w-full gap-4'>
 
             <Link href={'/'}><CaretLeft size={40} /></Link>
-            <h1 className='font-bold text-4xl'>Settings</h1>
+            <h1 className='text-4xl font-bold'>Settings</h1>
 
           </div>
 
           {/* Info */}
 
-          <div className='flex w-full gap-8 items-center'>
+          <div className='flex items-center w-full gap-8'>
 
-            <div className='w-24 h-24 relative'>
-              <Image src={faker.image.avatar()} fill alt='profile' className='object-contain rounded-full' />
-            </div>
+            <button className='relative w-24 h-24 group'>
+              <div className='absolute z-10 bg-[rgba(8,5,5,0.38)] w-full h-full top-0 rounded-full items-center justify-center group-hover:flex hidden'>
+                <PencilSimple size={25} />
+              </div>
+              <Image src={user.avatarURL} fill alt='profile' className='relative z-0 object-contain rounded-full' />
+            </button>
 
-            <div className='flex flex-col items-start text-black gap-2'>
-              <span className='font-medium text-lg'>{faker.person.fullName()}</span>
+            <div className='flex flex-col items-start gap-2 text-black'>
+              <span className='text-lg font-medium'>{user.username}</span>
               <span className='text-sm'>Exploring</span>
 
             </div>
@@ -87,7 +92,7 @@ const page = () => {
         </div>
 
         {/* Options */}
-        <div className='flex flex-1 flex-col gap-8'>
+        <div className='flex flex-col flex-1 gap-8'>
 
           {
             optionsList.map((option, index) => {
@@ -115,7 +120,7 @@ const page = () => {
 
       </div>
 
-      {showShortcuts?<KeyboardShortcuts setShowShortcuts={setShowShortcuts}/>:null}
+      {showShortcuts ? <KeyboardShortcuts setShowShortcuts={setShowShortcuts} /> : null}
 
     </div>
   )
