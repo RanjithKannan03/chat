@@ -9,6 +9,7 @@ import { sidebarStore } from '@/zustand/store';
 import Block from './Block';
 import { useState } from 'react';
 import Delete from './Delete';
+import { useChannelStateContext, useChatContext } from 'stream-chat-react';
 
 
 const ContactInfo = (props) => {
@@ -95,10 +96,13 @@ const ContactInfo = (props) => {
             online: false,
         },
     ];
+    const { channel } = useChannelStateContext();
+    const { client } = useChatContext();
     const toggle = sidebarStore((state) => state.toggle);
     const setType = sidebarStore((state) => state.setType);
     const [isOpen, setIsOpen] = useState(false);
     const [action, setAction] = useState("");
+    const members = Object.values(channel.state.members).filter((user) => { return user.user.id !== client.userID });
     return (
         <div className='flex flex-col w-full h-full gap-6'>
             {/* Title */}
@@ -113,11 +117,11 @@ const ContactInfo = (props) => {
                 <div className='flex items-center gap-8 py-6'>
 
                     <div className='relative w-16 h-16'>
-                        <Image src={ChatList[props.selectedID].img} alt="profile_pic" fill className='object-contain rounded-full ' />
+                        <Image src={members[0].user.avatarURL} alt="profile_pic" fill className='object-contain rounded-full ' />
                     </div>
 
                     <div className='flex flex-col gap-2 text-black'>
-                        <span className='text-lg font-medium'>{ChatList[props.selectedID].name}</span>
+                        <span className='text-lg font-medium'>{members[0].user.name}</span>
                         <span>+91 6265 081 928</span>
                     </div>
 
@@ -128,7 +132,7 @@ const ContactInfo = (props) => {
                 {/* About */}
                 <div className='flex flex-col gap-4 py-2 text-black'>
                     <span className=''>About</span>
-                    <span className='font-medium'>Hi there</span>
+                    <span className='font-medium'>{members[0].user.status}</span>
                 </div>
 
                 <div className='w-full h-[0.5px] bg-[#A4A4A4]' />

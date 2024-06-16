@@ -4,11 +4,13 @@ import Image from 'next/image'
 import React from 'react'
 
 import { userStore } from '@/zustand/store';
+import { useChatContext } from 'stream-chat-react';
 
 
 const Chat = (props) => {
 
     const user = userStore(state => state.user);
+    const { client } = useChatContext();
 
     const pinnedChannels = user.pinnedChannels;
 
@@ -35,6 +37,10 @@ const Chat = (props) => {
         return null;
     }
 
+    const members = Object.values(channel.state.members).filter((user) => { return user.user.id != client.userID });
+
+    console.log(members);
+
 
 
     return (
@@ -44,9 +50,9 @@ const Chat = (props) => {
                     {/* Profile Pic */}
                     <div className='w-1/4'>
                         <div className='relative w-10 h-10'>
-                            <Image src={displayImage} fill className='object-contain rounded-full' alt='profile pic' />
+                            <Image src={members[0].user.avatarURL} fill className='object-contain rounded-full' alt='profile pic' />
                             {/* Online Status */}
-                            <div className={`absolute h-3 w-3 rounded-full ${props.isActive ? 'bg-green-400' : 'bg-red-400'} bottom-0 right-0`} />
+                            <div className={`absolute h-3 w-3 rounded-full ${members[0].user.online ? 'bg-green-400' : 'bg-red-400'} bottom-0 right-0`} />
                         </div>
                     </div>
 

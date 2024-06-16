@@ -1,8 +1,11 @@
+'use client';
+
 import React from 'react';
 import { DocMsg, LinkMsg, MediaMsg, ReplyMsg, TextMessage, TimeLine } from './Message';
 import { faker } from '@faker-js/faker';
 import Footer from './Footer';
 import Header from './Header';
+import { useChannelStateContext, useChatContext } from 'stream-chat-react';
 
 const ChatScreen = (props) => {
     faker.seed(123);
@@ -164,13 +167,16 @@ const ChatScreen = (props) => {
             time: "10:35 AM",
         }
     ];
+    const { channel } = useChannelStateContext();
+    const { client, setActiveChannel } = useChatContext();
+    const members = Object.values(channel.state.members).filter((user) => { return user.user.id !== client.userID });
     return (
         <div className='w-full h-full'>
 
             <div className='flex flex-col'>
                 {/* Header */}
                 <div>
-                    <Header name={ChatList[props.selectedID].name} src={ChatList[props.selectedID].img} isOnline={ChatList[props.selectedID].online} />
+                    <Header name={members[0].user.name} avatarURL={members[0].user.avatarURL} isOnline={members[0].user.online} />
                 </div>
 
                 {/* Chat */}

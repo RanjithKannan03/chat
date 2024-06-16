@@ -1,17 +1,17 @@
 'use client';
 
 import React from 'react';
-import DefaultScreen from './DefaultScreen';
-import { selectedUserStore } from "@/zustand/store";
+import { useChannelStateContext } from 'stream-chat-react';
 import ChatScreen from './ChatScreen';
 
+
 const ChatContent = () => {
-    const id = selectedUserStore((state) => state.id);
+    const { channel } = useChannelStateContext();
     return (
         <div className="w-full h-full">
             {
-                id > -1 ?
-                    <ChatScreen selectedID={id} />
+                channel.id ?
+                    <ChatScreen />
                     :
                     <DefaultScreen />
             }

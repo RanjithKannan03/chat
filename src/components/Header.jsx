@@ -13,7 +13,7 @@ const Header = (props) => {
             <div className='flex items-center gap-4'>
 
                 <div>
-                    <Toggle src={props.src} isOnline={props.isOnline} />
+                    <Toggle avatarURL={props.avatarURL} isOnline={props.isOnline} />
                 </div>
 
                 <div className='flex flex-col justify-center'>
@@ -43,7 +43,7 @@ export const Toggle = (props) => {
     const toggle = sidebarStore((state) => state.toggle)
     return (
         <div className='relative w-12 h-12 cursor-pointer' onClick={toggle}>
-            <Image src={props.src} fill className='object-contain rounded-full' />
+            <Image src={props.avatarURL} fill className='object-contain rounded-full' />
             {/* Online Status */}
             <div className={`absolute h-3 w-3 rounded-full ${props.isOnline ? 'bg-green-400' : 'bg-red-400'} bottom-0 right-0`} />
         </div>

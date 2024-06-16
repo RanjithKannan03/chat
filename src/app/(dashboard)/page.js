@@ -1,3 +1,4 @@
+import ChannelWrapper from "@/components/ChannelWrapper";
 import ChatContent from "@/components/ChatContent";
 import ChatList from "@/components/ChatList";
 import SideBar from "@/components/SideBar";
@@ -22,13 +23,17 @@ export default function Home() {
       <div className="flex-1">
 
 
-        <ChatContent />
+        <ChannelWrapper >
+          <ChatContent />
+        </ChannelWrapper>
 
       </div>
 
 
       {/* Contact Info */}
-      <SideBar />
+      <ChannelWrapper>
+        <SideBar />
+      </ChannelWrapper>
 
 
     </div>

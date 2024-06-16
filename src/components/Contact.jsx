@@ -7,14 +7,14 @@ import Starred from './Starred';
 const Contact = (props) => {
 
   const type = sidebarStore((state) => state.type);
-  const id = selectedUserStore((state) => state.id);
+
 
   return (
     <div className='w-full h-full bg-white'>
       {props.open &&
         (
           type === "CONTACT" ?
-            <ContactInfo selectedID={id} />
+            <ContactInfo />
             :
             type === "MEDIA" ?
               <SharedMessages />
