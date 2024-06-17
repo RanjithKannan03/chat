@@ -1,7 +1,8 @@
-import ChannelWrapper from "@/components/ChannelWrapper";
+import MainChannelWrapper from "@/components/ChannelWrapper";
 import ChatContent from "@/components/ChatContent";
 import ChatList from "@/components/ChatList";
 import SideBar from "@/components/SideBar";
+import SideBarChannelWrapper from "@/components/SideBarChannelWrapper";
 import { faker } from '@faker-js/faker';
 
 export default function Home() {
@@ -23,17 +24,17 @@ export default function Home() {
       <div className="flex-1">
 
 
-        <ChannelWrapper >
+        <MainChannelWrapper>
           <ChatContent />
-        </ChannelWrapper>
+        </MainChannelWrapper>
 
       </div>
 
 
       {/* Contact Info */}
-      <ChannelWrapper>
+      <SideBarChannelWrapper>
         <SideBar />
-      </ChannelWrapper>
+      </SideBarChannelWrapper>
 
 
     </div>

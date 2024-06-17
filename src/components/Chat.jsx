@@ -14,6 +14,8 @@ const Chat = (props) => {
 
     const pinnedChannels = user.pinnedChannels;
 
+    const id = client.userID;
+
     const {
         channel,
         activeChannel,
@@ -49,7 +51,7 @@ const Chat = (props) => {
                 <div className='flex items-center w-full gap-2'>
                     {/* Profile Pic */}
                     <div className='w-1/4'>
-                        <div className='relative w-10 h-10'>
+                        <div className='relative w-12 h-12'>
                             <Image src={members[0].user.avatarURL} fill className='object-contain rounded-full' alt='profile pic' />
                             {/* Online Status */}
                             <div className={`absolute h-3 w-3 rounded-full ${members[0].user.online ? 'bg-green-400' : 'bg-red-400'} bottom-0 right-0`} />
@@ -69,7 +71,7 @@ const Chat = (props) => {
 
                     <div className='flex flex-col items-center w-1/4 gap-1'>
                         {/* Time */}
-                        <span className={`${isSelected ? 'text-white' : 'text-black'} text-sm`}>{latestMessageAt}</span>
+                        <span className={`${isSelected ? 'text-white' : 'text-black'} text-xs font-light`}>{latestMessageAt.toLocaleTimeString()}</span>
 
                         {/* Num Messages */}
 

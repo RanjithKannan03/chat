@@ -2,14 +2,15 @@
 
 import React from 'react';
 import { Channel } from 'stream-chat-react';
+import EmptyState from './EmptyState';
+import { Message, TimeLine } from './Message';
 
-
-const ChannelWrapper = ({ children }) => {
+const MainChannelWrapper = ({ children }) => {
     return (
-        <Channel>
+        <Channel EmptyStateIndicator={EmptyState} DateSeparator={TimeLine} >
             {children}
         </Channel>
     )
 }
 
-export default ChannelWrapper
+export default MainChannelWrapper
